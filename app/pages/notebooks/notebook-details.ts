@@ -22,6 +22,12 @@ export class NotebookDetailsPage {
      this.notes = dataService.getNotes(this.notebook.id);
     }
 
+    //Pull to refresh
+    doRefresh(event) {
+        this.notes = this.dataService.getNotes(this.notebook.id);
+    }
+
+
     editNotebook(event, notebook) {
         this.nav.push(NotebookEditPage, {'notebook': notebook});
     }
@@ -36,5 +42,6 @@ export class NotebookDetailsPage {
 
     deleteNotebook(event, notebook) {
         this.dataService.deleteNotebook(notebook);
+        this.nav.pop();
     }
 }

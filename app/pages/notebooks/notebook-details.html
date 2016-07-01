@@ -20,6 +20,9 @@
 </ion-header>
 
 <ion-content>
+
+ 
+
    <ion-list>
        <button ion-item *ngFor="let note of notes" (click)="noteTapped($event, note)">
            {{note.title}}

@@ -26,7 +26,12 @@ export class NotebooksPage {
             }
         ];*/
 
-        this.notebooks = dataService.getNotebooks();
+        this.notebooks = this.dataService.getNotebooks();
+    }
+
+    //Pull to refresh
+    doRefresh(event) {
+        this.notebooks = this.dataService.getNotebooks();
     }
 
     notebookTapped(event, notebook) {

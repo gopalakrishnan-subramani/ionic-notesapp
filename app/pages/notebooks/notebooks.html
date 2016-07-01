@@ -22,6 +22,8 @@
 </ion-header>
 
 <ion-content>
+ 
+
  <ion-list>
      <button ion-item *ngFor="let notebook of notebooks" (click)="notebookTapped($event, notebook)">
         <div class="item-left">{{notebook.title}}</div>
