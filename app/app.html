@@ -9,7 +9,16 @@
       <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
         {{p.title}}
       </button>
+
+    <app-footer></app-footer>
+
+    <ion-item>{{"Contact" | UPPER}}</ion-item>
+
+    <ion-item>{{"Ionic Framework was created by.." | SUMMARY:15}}</ion-item>
+
+    <lessons></lessons>
     </ion-list>
+
   </ion-content>
 
 </ion-menu>

@@ -1,26 +1,39 @@
 <ion-header>
-    <ion-navbar>
-        <ion-nav-buttons start>
-            <button (click)="editNotebook($event, notebook)">
-                 Edit
+<ion-navbar>
+
+
+   <ion-title>{{notebook.title}}</ion-title>
+    <ion-buttons end>
+             <button (click)="addNote($event, notebook)">
+                 <ion-icon name="add"></ion-icon>
             </button>
 
-            <button (click)="deleteNotebook($event, notebook)">
-                 Delete
-            </button>
-        </ion-nav-buttons>
-
-          <ion-nav-buttons end>
-            <button (click)="addNote($event, notebook)">
-                 Add Note
-            </button>
-        </ion-nav-buttons>
-        <ion-title>Notebook-{{notebook.title}}</ion-title>
-    </ion-navbar>
+         <button (click)="refresh()">
+            <ion-icon name="refresh" ></ion-icon>
+        </button>
+    </ion-buttons>
+ </ion-navbar>
+ 
 </ion-header>
 
 <ion-content>
 
+<ion-list>
+
+   
+  <ion-item>
+     
+    <button outline item-left (click)="editNotebook($event, notebook)">
+      <ion-icon name="configure"></ion-icon>
+      Edit Notebook
+    </button>
+
+    <button outline item-right (click)="deleteNotebook($event, notebook)">
+      <ion-icon name="trash"></ion-icon>
+      Delete Notebook
+    </button>
+  </ion-item> 
+</ion-list>
  
 
    <ion-list>

@@ -1,9 +1,12 @@
 import {Component} from "@angular/core";
 import {Page} from "ionic-angular";
 import {LocalStorageService} from "../../services/local-storage-service";
-import {NavParams} from "ionic-angular";
+import {NavParams, NavController} from "ionic-angular";
+import {Events} from 'ionic-angular';
 
-@Component({
+import {Vibration} from "ionic-native";
+
+@Page({
     templateUrl: "build/pages/notebooks/notebook-edit.html",
     providers: [LocalStorageService]
 })
@@ -11,7 +14,9 @@ import {NavParams} from "ionic-angular";
 export class NotebookEditPage {
     notebook: any;
 
-    constructor(private dataService: LocalStorageService, private navParams:NavParams) {
+    constructor(private dataService: LocalStorageService, private nav:NavController, private navParams:NavParams,
+        public events: Events
+    ) {
           
         this.notebook = navParams.get('notebook');
 
@@ -21,10 +26,28 @@ export class NotebookEditPage {
             this.notebook = {title: 'My Notebook', id: -1};
         } 
 
+        navigator.geolocation.getCurrentPosition(
+                (position) => {
+                    //let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                    console.log(position.coords.latitude, position.coords.longitude);
+                    this.notebook.latitude = position.coords.latitude;
+                    this.notebook.longitude = position.coords.longitude;
+                }
+        );
     }
 
     saveNotebook() {
         console.log(JSON.stringify(this.notebook));
         this.dataService.saveNotebook(this.notebook);
+        Vibration.vibrate(1000);//vibrate a second
+        console.log("Notebook saved successfully");
+        
+        this.events.publish('notebooks:refresh', "");
+
+        this.nav.pop();
+    }
+
+    cancel() {
+        this.nav.pop();
     }
 }

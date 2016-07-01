@@ -1,20 +1,18 @@
 <ion-header>
 <ion-navbar>
-    <!--
+    
     <button menuToggle>
         <ion-icon name="menu"></ion-icon>
-    </button> -->
-
-    <ion-buttons start>
-        <button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-    </ion-buttons>
+    </button>  
 
    <ion-title>Notebooks</ion-title>
     <ion-buttons end>
         <button (click)="addNotebook()">
             <ion-icon name="add" ></ion-icon>
+        </button>
+
+         <button (click)="refresh()">
+            <ion-icon name="refresh" ></ion-icon>
         </button>
     </ion-buttons>
 
@@ -22,7 +20,13 @@
 </ion-header>
 
 <ion-content>
- 
+    <!-- pull to refresh not working -->
+    <!--
+ <ion-refresher (refresh)="doRefresh($event, refresher)">
+  <ion-refresher-content
+pullingIcon="arrow-dropdown"></ion-refresher-content>
+</ion-refresher>
+-->
 
  <ion-list>
      <button ion-item *ngFor="let notebook of notebooks" (click)="notebookTapped($event, notebook)">
