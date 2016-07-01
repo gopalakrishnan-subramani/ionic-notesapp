@@ -4,11 +4,25 @@
             <button (click)="editNotebook($event, notebook)">
                  Edit
             </button>
+
+            <button (click)="deleteNotebook($event, notebook)">
+                 Delete
+            </button>
+        </ion-nav-buttons>
+
+          <ion-nav-buttons end>
+            <button (click)="addNote($event, notebook)">
+                 Add Note
+            </button>
         </ion-nav-buttons>
         <ion-title>Notebook-{{notebook.title}}</ion-title>
     </ion-navbar>
 </ion-header>
 
 <ion-content>
-    <div>{{notebook.title}}</div>
+   <ion-list>
+       <button ion-item *ngFor="let note of notes" (click)="noteTapped($event, note)">
+           {{note.title}}
+       </button>
+   </ion-list>
 </ion-content>

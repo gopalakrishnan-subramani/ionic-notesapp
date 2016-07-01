@@ -1,0 +1,13 @@
+<ion-header>
+    <ion-navbar>
+        <ion-nav-buttons start>
+            <button (click)="editNote($event, note)">Edit</button>
+            <button (click)="deleteNote($event, note)">Delete</button>
+        </ion-nav-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+<h2>{{note.title}}</h2>
+<p> {{note.description}} </p>
+</ion-content>

@@ -4,6 +4,33 @@
 
 <ion-content>
 
-</ion-content>
 
+   <ion-list>
+<form   novalidate>
+    <ion-item>
+        <ion-label floating primary>Title</ion-label>
+        <ion-input [(ngModel)]="note.title" ngControl="title" type="text"
+          required>
+        </ion-input>
+    </ion-item>
+
+     <p [hidden]="note.title || submitted == false" danger padding-left>
+        Title is required
+      </p>
+
+   <ion-item>
+        <ion-label floating primary>Note</ion-label>
+        <ion-input [(ngModel)]="note.description" ngControl="description" type="text"
+          >
+        </ion-input>
+    </ion-item>
+ 
+
+    <ion-item>
+        <button (click)="saveNote()">Save</button>
+    </ion-item>
+</form>
+
+   </ion-list> 
+</ion-content>
 
