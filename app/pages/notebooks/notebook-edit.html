@@ -1,0 +1,37 @@
+<ion-header>
+    <ion-navbar>
+        <ion-nav-buttons start>
+            <button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+                </button>
+        </ion-nav-buttons>
+        <ion-nav-buttons end>
+           <button (click)="cancel($event)">Cancel</button>
+        </ion-nav-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+ 
+   <ion-list>
+<form #notebookForm="ngForm" novalidate>
+    <ion-item>
+        <ion-label floating primary>Name</ion-label>
+        <ion-input [(ngModel)]="notebook.title" ngControl="title" type="text"
+        #title="ngForm" required>
+        </ion-input>
+    </ion-item>
+
+     <p [hidden]="notebook.title || submitted == false" danger padding-left>
+        Name is required
+      </p>
+
+    <ion-item>
+        <button (click)="saveNotebook()">Save</button>
+    </ion-item>
+</form>
+
+   </ion-list> 
+ 
+
+</ion-content>

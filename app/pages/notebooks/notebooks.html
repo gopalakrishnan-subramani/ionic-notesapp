@@ -1,0 +1,30 @@
+<ion-header>
+<ion-navbar>
+    <!--
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button> -->
+
+    <ion-buttons start>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+    </ion-buttons>
+
+   <ion-title>Notebooks</ion-title>
+    <ion-buttons end>
+        <button (click)="addNotebook()">
+            <ion-icon name="add" ></ion-icon>
+        </button>
+    </ion-buttons>
+
+</ion-navbar>
+</ion-header>
+
+<ion-content>
+ <ion-list>
+     <button ion-item *ngFor="let notebook of notebooks" (click)="notebookTapped($event, notebook)">
+        <div class="item-left">{{notebook.title}}</div>
+     </button>
+ </ion-list>
+</ion-content>

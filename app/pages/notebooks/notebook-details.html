@@ -1,0 +1,14 @@
+<ion-header>
+    <ion-navbar>
+        <ion-nav-buttons start>
+            <button (click)="editNotebook($event, notebook)">
+                 Edit
+            </button>
+        </ion-nav-buttons>
+        <ion-title>Notebook-{{notebook.title}}</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <div>{{notebook.title}}</div>
+</ion-content>
