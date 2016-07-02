@@ -1,13 +1,23 @@
 <ion-header>
-    <ion-navbar>
-        <ion-nav-buttons start>
-            <button (click)="editNote($event, note)">Edit</button>
-            <button (click)="deleteNote($event, note)">Delete</button>
-        </ion-nav-buttons>
-    </ion-navbar>
+
+<ion-navbar>
+   <ion-title>{{note.title}}</ion-title>
+    <ion-buttons end>
+             <button (click)="editNote($event, note)">
+                 <ion-icon name="clipboard"></ion-icon>
+            </button>
+         <button (click)="deleteNote($event, note)">
+            <ion-icon name="trash" ></ion-icon>
+        </button>
+    </ion-buttons>
+ </ion-navbar>
+ 
 </ion-header>
 
 <ion-content>
 <h2>{{note.title}}</h2>
+
 <p> {{note.description}} </p>
+
+<p><img [src]="note.base64Image" *ngIf="note.base64Image" /></p>
 </ion-content>

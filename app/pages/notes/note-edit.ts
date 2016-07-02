@@ -4,6 +4,8 @@ import {NavParams, NavController} from "ionic-angular";
 import {LocalStorageService} from "../../services/local-storage-service";
 import {Events} from "ionic-angular";
 
+import {Camera} from "ionic-native";
+
 @Component({
     templateUrl: "build/pages/notes/note-edit.html",
     providers: [LocalStorageService]
@@ -21,7 +23,12 @@ export class NoteEditPage {
         this.note = navParams.get("note");
 
         if (!this.note) {
-            this.note = {title: '', description: '', notebookId: this.notebook.id, id: -1};
+            this.note = {title: '', 
+                         description: '', 
+                         notebookId: this.notebook.id, 
+                         id: -1,
+                         base64Image: ''
+                    };
         }
 
         navigator.geolocation.getCurrentPosition(
@@ -32,6 +39,19 @@ export class NoteEditPage {
                     this.note.longitude = position.coords.longitude;
                 }
         );
+    }
+
+    takePicture(){
+            Camera.getPicture({
+                destinationType: Camera.DestinationType.DATA_URL,
+                targetWidth: 1000,
+                targetHeight: 1000
+            }).then((imageData) => {
+                // imageData is a base64 encoded string
+                this.note.base64Image = "data:image/jpeg;base64," + imageData;
+            }, (err) => {
+                console.log(err);
+            });
     }
 
     saveNote(event) {

@@ -41,5 +41,16 @@
 </form>
 
    </ion-list> 
+
+   <ion-card>
+    <ion-card-content>
+      
+      <button (click)="takePicture()">Picture</button>
+
+
+      <img [src]="note.base64Image" *ngIf="note.base64Image" />
+    </ion-card-content>
+  </ion-card>
+
 </ion-content>
 
